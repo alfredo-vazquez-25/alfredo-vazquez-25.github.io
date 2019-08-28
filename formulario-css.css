@@ -1,0 +1,19 @@
+
+.centrado{
+	display: flex;
+	justify-content: center;
+	vertical-align: top;
+}
+.botonEnviar{
+	background-color: #4CAF50;
+}
+button{
+	background-color: red;
+}
+table, tr, th, td{
+    margin: 0 auto;
+    border: solid 1px;
+    border-collapse: collapse;
+    object-position: center;
+    
+}
