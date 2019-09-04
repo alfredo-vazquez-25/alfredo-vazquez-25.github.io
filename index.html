@@ -2,165 +2,70 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Formulario</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="formulario-css.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<title>Inicio</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale= 1.0 maximum-scale= 1.0">
+	<link rel= "stylesheet" href= "css\bootstrap.min.css">
+	<link rel= "stylesheet" href= "css\style.css">
 </head>
+
 <body>
-	<h1>Formulario</h1>
-		<!--<div class="centrado">-->
-		<div class="container">
-			<p>
-				<form action="#" method="POST" id="formulario" onsubmit="return false;">
-					<div class="form-group">
-					  <label for="nombre">Nombre: </label>
-					  	<input type="text" id="nombre" class="form-control" name="nombre" placeholder="Escriba su nombre" size="20" required>
-					  	<br/>
 
-					  <label for="apellido">Apellido: </label>
-					  	<input type="text" id="apellido" class="form-control" name="apellido" placeholder="Escriba su apellido" size="20" required>
-					  	<br/>
-
-					  <label for="dni">D.N.I: </label>
-					  	<input type="number" id="dni" class="form-control" name="dni" max="99999999" placeholder="Escriba su D.N.I." required>
-					  	<br/>
-
-					  <label for="nacimiento">Año de nacimiento: </label>
-					  	<input type="date" id="nacimiento" class="form-control" name="nacimiento" min="1919" max="2019" required>
-					  	<br/>
-					  
-					    <input class="botonEnviar" type="submit" value="Ingresar Datos">
+	<div class="container">
+		<br>
+		<header>
+			<nav class ="navbar navbar-default"> 
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="navbar-1">
+						<ul class="nav navbar-nav">
+							<li><a href="inicio.html">Inicio</a></li>
+							<li><a href="index.html">Formulario</a></li>
+							<li><a href="cv.html">CV</a></li>
+						</ul>
 					</div>
-				</form>
+				</div>
+			</nav>
+		</header>
+	</div>
+
+	<div class="container">
+		<h1>FORMULARIO <br> <small>INSCRIPCIÓN</small> </h1>
+		<br>
+		<form action="" class="">
+			<legend><strong>Ingresá tus datos</strong></legend> 
+
+			<p><strong>Nombre:</strong><input class="form-control" type="text" name="nombre" id="nombre"></p>
+			<p><strong> Apellido: </strong><input class="form-control" type="text" name="apellido" id="apellido" ></p>
+			<p><strong> Edad: </strong><input class="form-control" type="number" name="edad" id="edad" ></p>
+			<p><label>Sexo:</label>
+				<input type="radio" name="genero" value="Femenino" class="radioButton" >Femenino
+				<input type="radio" name="genero" value="Masculino" class="radioButton">Masculino
+				<input type="radio" name="genero" value="Otro" class="radioButton">Otro
 			</p>
-		</div>
-		<div class="dashed">
-			<h2>Información del usuario</h2>
-			<hr>
-
-			<table id="table" align="center">
+			<p><strong> E-mail:</strong><input class="form-control" type="text" name="mail" id="mail" ></p>
+			<button id="adicionar" onClick="addHtmlTableRow()" class="btn btn-success" type="button">Agregar a la tabla</button>
+			<input type="button" onClick="tableToExcel('mytable', 'titulo de la tabla')" value="Exportar a Excel" class="btn btn-success">
+		</form>
+	</div>
+	<div class="container">
+		<br>
+		<h1>RESULTADOS</h1>
+		<table  id="mytable" class="table table-bordered table-hover table-condensed">
+			<div class = "table-responsive">
 				<tr>
-					<td>Nombre:</td>
-					<td id="p_nombre" ><span></span></td>
-					<td><button class="btn btn-danger" ondblclick="row()">Borrar</button></td>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Edad</th>
+					<th>Sexo</th>
+					<th>E-mail</th>
+					<th>Quitar</th>
 				</tr>
-				<tr>
-					<td>Apellido:</td>
-					<td id="p_apellido"><span></span></td>
-					<td><button class="btn btn-danger" ondblclick="row()">Borrar</button></td>
-				</tr>
-				<tr>	
-					<td>D.N.I:</td>
-					<td id="p_dni"><span></span></td>
-					<td><button class="btn btn-danger" ondblclick="row()">Borrar</button></td>
-				</tr>
-				<tr>
-					<td>Año de Nacimiento:</td>
-					<td id="p_nacimiento"><span></span></td>
-					<td><button class="btn btn-danger" ondblclick="row()">Borrar</button></td>
-				</tr>
-				<tr>
-					<button type="button" class="btn btn-success" onclick="tableToExcel('table', 'W3C Example Table')" value="Exportar a Excel"></button>
-				</tr>
-			</table>
-			<p id="alerta"></p>
-		</div>	
-		<script type="text/javascript">
-			'use strict'
-			window.addEventListener('load',function () {
-				console.log("DOM cargado!");
-			})
+			</div>
+		</table>
+	</div>
 
-			 var formulario = document.querySelector("#formulario");
-			 var box_dashed = document.querySelector(".dashed");
-			 box_dashed.style.display = "none";
 
-			 formulario.addEventListener('submit', function () {
-
-			 var nombre = document.querySelector("#nombre").value;
-			 var apellido = document.querySelector("#apellido").value;
-			 var dni = document.querySelector("#dni").value;
-			 var nacimiento = document.querySelector("#nacimiento").value;
-
-			 if (nombre.trim() == null || nombre.trim().lengt == 0) {
-			 	alert("El nombre no es válido");
-			 	return false;
-			 }
-			 if (apellido.trim() == null || apellido.trim().length == 0) {
-			 	alert("El apellido no es válido");
-			 	return false;
-			 }
-			 if (dni == null || isNaN (dni)) {
-			 	alert("El D.N.I. no es válido");
-			 	return false;
-			 }
-			 if (nacimiento == null) {
-			 	alert("La fecha de nacimiento no es válido");
-			 	return false;
-			 }
-
-			box_dashed.style.display = "block";
-
-			var p_nombre = document.querySelector("#p_nombre span");
-			var p_apellido = document.querySelector("#p_apellido span");
-			var p_dni = document.querySelector("#p_dni span");
-			var p_nacimiento = document.querySelector("#p_nacimiento span");
-
-			p_nombre.innerHTML = nombre;
-			p_apellido.innerHTML = apellido;
-			p_dni.innerHTML = dni;
-			p_nacimiento.innerHTML = nacimiento;
-			/*
-			var datos_usuario = [nombre, apellido, dni, nacimiento];
-
-			var indice;
-			for (indice in datos_usuario) {
-				var parrafo = document.createElement("p");
-				parrafo.append(datos_usuario[indice]);
-				box_dashed.append(parrafo);
-
-			}
-			*/
-			 	
-			 });
-
-			 function row(){
-
-			 	// delete row (index-0)
-			 	document.getElementById("table").deleteRow(0);
-			 }
-
-			 	var tableToExcel = (function() {
-
-     var uri = 'data:application/vnd.ms-excel;base64,',
-       template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',        base64 = function(s) {
-         return window.btoa(unescape(encodeURIComponent(s)))
-       },        
-       format = function(s, c) {
-         return s.replace(/{(\w+)}/g, function(m, p) {
-           return c[p];
-         })
-       }
-
-       return function(table, name) {
-       	var size = document.getElementById(table).rows.length;
-       	if (size > 1 ){
-       		if (!table.nodeType) table = document.getElementById(table)
-       var ctx = {
-         worksheet: name || 'Worksheet',
-         table: table.innerHTML
-       }
-       window.location.href = uri + base64(format(template, ctx))
-       	}else{ 
-       		document.getElementById("alert").innerHTML='<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Holy guacamole!</strong> You should check in on some of those fields below.  <button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span>  </button></div>'
-       		
-     }    }()
-       	}
-       	
-       
-	</script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/funciones.js"></script>
 </body>
 </html>
